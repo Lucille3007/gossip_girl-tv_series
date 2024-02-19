@@ -14,6 +14,10 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     ArrayList<DataModel> dataset;
+    public void setFilteredList(ArrayList<DataModel> filteredList) {
+        this.dataset = filteredList;
+        notifyDataSetChanged();
+    }
 
     public CustomAdapter(ArrayList<DataModel> dataSet)
     {
@@ -34,8 +38,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         }
     }
 
-
-
     @NonNull
     @Override
     public CustomAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -54,7 +56,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         textViewName.setText(dataset.get(position).getName());
         textViewDescription.setText(dataset.get(position).getDescription());
         imageView.setImageResource(dataset.get(position).getImage());
-
     }
 
     @Override
